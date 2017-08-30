@@ -2,7 +2,8 @@ package TestFramework;
 
 public class payLoad {
 
-	
+	//this payload is being used in basics3 class
+
 	public static String getPostData()
 	{
 	

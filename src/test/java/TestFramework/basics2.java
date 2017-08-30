@@ -45,8 +45,15 @@ public class basics2 {
 		post("/maps/api/place/add/json").
 		then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().
 		body("status",equalTo("OK"));
-		
-	// Create a place =response (place id)
+
+
+		/*
+		* create a place and delelete thaat place
+		* you have to write two apis in order to achieve this
+		* one to create api and one api to delete the api
+		* */
+
+		// Create a place =response (place id)
 		
 		// delete Place = (Request - Place id)	
 		
