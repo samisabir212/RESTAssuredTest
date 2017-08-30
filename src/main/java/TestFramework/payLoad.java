@@ -6,7 +6,8 @@ public class payLoad {
 
 	public static String getPostData()
 	{
-	
+
+		//this is the payload from the google webservice that is used for an example
 		String b ="{"+
 				  "\"location\": {"+
 				    "\"lat\": -33.8669710,"+
