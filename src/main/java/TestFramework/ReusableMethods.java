@@ -9,23 +9,29 @@ import io.restassured.response.Response;
 
 public class ReusableMethods {
 	
-	
+
+
+	//converting to xml
 	public static XmlPath rawToXML(Response r)
 	{
 	
 		
-		String respon=r.asString();
-		XmlPath x=new XmlPath(respon);
+		String respon = r.asString();
+		XmlPath x = new XmlPath(respon);
 		return x;
 		
 	}
-	
+
+
+	//converting to json
 	public static JsonPath rawToJson(Response r)
 	{ 
 		String respon=r.asString();
 		JsonPath x=new JsonPath(respon);
 		return x;
 	}
+
+	//jira access key setup
 	public static String getSessionKEY()
 	{
 		RestAssured.baseURI= "http://localhost:8080";

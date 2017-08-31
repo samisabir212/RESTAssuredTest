@@ -17,9 +17,13 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+
+/*
+* THIS TEST IS USING JSON
+* */
 public class basics3 {
 	
-	Properties prop=new Properties();
+	Properties prop=new Properties(); //this has to be declared globally which is..
 	@BeforeTest
 	public void getData() throws IOException
 	{
@@ -72,8 +76,8 @@ public class basics3 {
 
 
 		// Task 2- Grab the Place ID from response
-		
-		String responseString=res.asString(); //converting res to a string so we can print out and see it
+
+		String responseString = res.asString(); //converting res to a string so we can print out and see it
 		System.out.println("printing correct response data = " + responseString);
 
 		//converting responseString int json format using jsonpath class
