@@ -17,7 +17,7 @@ public class basics6 {
 	public void getData() throws IOException
 	{
 		
-		FileInputStream fis=new FileInputStream("C:\\Users\\rahul\\workspace\\DemoProject\\src\\files\\env.properties");
+		FileInputStream fis = new FileInputStream("/Users/sami/IdeaProjects/RESTAssuredTest/src/main/java/TestFramework/env.properties");
 		prop.load(fis);
 		
 		//prop.get("HOST");
@@ -26,27 +26,34 @@ public class basics6 {
 	public void JiraAPICreateIssue()
 	{
 		//Creating Issue/Defect
-		
-		RestAssured.baseURI= "http://localhost:8080";
-		Response res=given().header("Content-Type", "application/json").
-		header("Cookie","JSESSIONID="+ReusableMethods.getSessionKEY()).
+
+		RestAssured.baseURI = prop.getProperty("JIRAHOST");
+		//creating sessionc
+		Response res = given().header("Content-Type", "application/json").
+		header("Cookie","JSESSIONID=" + ReusableMethods.getSessionKEY()).
 		body("{"+
     "\"fields\": {"+
        "\"project\":{"+
-          "\"key\": \"RES\""+
+          "\"key\": \"SAMISABIR\""+
        "},"+
-       "\"summary\": \"Issue 5 for adding comment\","+
+       "\"summary\": \"issue from Java Framework\","+
        "\"description\": \"Creating my second bug\","+
        "\"issuetype\": {"+
           "\"name\": \"Bug\""+
        "}"+
    "}}").when().
 		post("/rest/api/2/issue").then().statusCode(201).extract().response();
-		
-		   JsonPath js= ReusableMethods.rawToJson(res);
-		   String id=js.get("id");
-		   System.out.println(id);
-		
+
+
+		/*
+		* once you get the response
+		* must convert raw response into string
+		* then again convert from string into json
+		* */
+		   JsonPath js = ReusableMethods.rawToJson(res);
+		   String id = js.get("id");
+
+
 				
 		
 		

@@ -31,16 +31,17 @@ public class ReusableMethods {
 		return x;
 	}
 
-	//jira access key setup
+	//jira access key setup "Reusable method"
 	public static String getSessionKEY()
 	{
 		RestAssured.baseURI= "http://localhost:8080";
-		Response res=given().header("Content-Type", "application/json").
-		body("{ \"username\": \"rahulonlinetutor\", \"password\": \"Jira12345\" }").
+
+		Response res = given().header("Content-Type", "application/json").
+		body("{ \"username\": \"samisabir212\", \"password\": \"Africaunite2012\" }").
 		when().
 		post("/rest/auth/1/session").then().statusCode(200).
 		extract().response();
-		 JsonPath js= ReusableMethods.rawToJson(res);
+		 JsonPath js = ReusableMethods.rawToJson(res);
 		String sessionid= js.get("session.value");
 		return sessionid;
 	}

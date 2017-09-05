@@ -18,7 +18,7 @@ public class basics8 extends basics7{
 	public void getData() throws IOException
 	{
 		
-		FileInputStream fis=new FileInputStream("C:\\Users\\rahul\\workspace\\DemoProject\\src\\files\\env.properties");
+		FileInputStream fis=new FileInputStream("/Users/sami/IdeaProjects/RESTAssuredTest/src/main/java/TestFramework/env.properties");
 		prop.load(fis);
 		
 		//prop.get("HOST");
