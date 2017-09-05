@@ -7,7 +7,6 @@ import static io.restassured.RestAssured.given;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import TestFramework.ReusableMethods;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -16,7 +15,7 @@ public class basics6 {
 	@BeforeTest
 	public void getData() throws IOException
 	{
-		
+		//loading the env.properties file
 		FileInputStream fis = new FileInputStream("/Users/sami/IdeaProjects/RESTAssuredTest/src/main/java/TestFramework/env.properties");
 		prop.load(fis);
 		
@@ -27,31 +26,34 @@ public class basics6 {
 	{
 		//Creating Issue/Defect
 
+		//inizialize the base URI from properties file
 		RestAssured.baseURI = prop.getProperty("JIRAHOST");
-		//creating sessionc
+		//creating responce
 		Response res = given().header("Content-Type", "application/json").
-		header("Cookie","JSESSIONID=" + ReusableMethods.getSessionKEY()).
-		body("{"+
+		header("Cookie","JSESSIONID=" + ReusableMethods.getSessionKEY()). //get the session key
+		body("{"+   //enter in body of the Jira functionality api
     "\"fields\": {"+
        "\"project\":{"+
-          "\"key\": \"SAMISABIR\""+
+          "\"key\": \"SAMISABIR\""+/**/
        "},"+
-       "\"summary\": \"issue from Java Framework\","+
-       "\"description\": \"Creating my second bug\","+
+       "\"summary\": \"issue from Java Framework\","+ //enter summary
+       "\"description\": \"creating a bug \","+ //enter description
        "\"issuetype\": {"+
-          "\"name\": \"Bug\""+
+          "\"name\": \"Bug\""+ //select the name of the issue type
        "}"+
-   "}}").when().
-		post("/rest/api/2/issue").then().statusCode(201).extract().response();
+   "}}").when(). //use when then post
+		post("/rest/api/2/issue").then().statusCode(201).extract().response(); //extract the issue repononse
 
 
 		/*
 		* once you get the response
-		* must convert raw response into string
-		* then again convert from string into json
+		* convert from string into json
+		* convert raw response into string
 		* */
 		   JsonPath js = ReusableMethods.rawToJson(res);
 		   String id = js.get("id");
+
+		System.out.println(id);
 
 
 				

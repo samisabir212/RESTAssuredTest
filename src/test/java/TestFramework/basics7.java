@@ -35,7 +35,7 @@ public class basics7 {
         "\"type\": \"role\","+
         "\"value\": \"Administrators\" }"+
 "}").when().
-		post("/rest/api/2/issue/10207/comment/").then().statusCode(201).extract().response();
+		post("/rest/api/2/issue/10035/comment/").then().statusCode(201).extract().response();
 		   JsonPath js= ReusableMethods.rawToJson(res);
 		   String id=js.get("id");
 		   System.out.println(id);
