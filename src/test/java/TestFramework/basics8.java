@@ -18,7 +18,7 @@ public class basics8 extends basics7{
 	public void getData() throws IOException
 	{
 		
-		FileInputStream fis=new FileInputStream("/Users/sami/IdeaProjects/RESTAssuredTest/src/main/java/TestFramework/env.properties");
+		FileInputStream fis = new FileInputStream("/Users/sami/IdeaProjects/RESTAssuredTest/src/main/java/TestFramework/env.properties");
 		prop.load(fis);
 		
 		//prop.get("HOST");
@@ -31,28 +31,23 @@ public class basics8 extends basics7{
 		RestAssured.baseURI= "http://localhost:8080";
 		Response res=given().header("Content-Type", "application/json").
 		header("Cookie","JSESSIONID="+ReusableMethods.getSessionKEY()).
-		pathParams("commentid","10103").
+
+		pathParams("commentid","10021"). //creating a path param for the commentID in the PUT statement
 		
-		body("{ \"body\": \"Updating comment from the automation code\","+
+		body("{ \"body\": \"Updating comment from the automation code comment if 10021\","+
     "\"visibility\": {"+
         "\"type\": \"role\","+
         "\"value\": \"Administrators\" }"+
 "}").when().
-		put("/rest/api/2/issue/10207/comment/{commentid}").then().statusCode(200).extract().response();
+		put("/rest/api/2/issue/10037/comment/{commentid}").then().statusCode(200).extract().response(); //status code changed from 201 to 200
+
 	
-		
-		
-		
-		
-		
-		
-		
+
 		
 		  
 	}
 				
 		
 		
-		
-		}
+}
 	

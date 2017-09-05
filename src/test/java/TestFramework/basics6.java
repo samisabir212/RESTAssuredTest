@@ -36,7 +36,7 @@ public class basics6 {
        "\"project\":{"+
           "\"key\": \"SAMISABIR\""+/**/
        "},"+
-       "\"summary\": \"issue from Java Framework\","+ //enter summary
+       "\"summary\": \"issue from Java Framework testing\","+ //enter summary
        "\"description\": \"creating a bug \","+ //enter description
        "\"issuetype\": {"+
           "\"name\": \"Bug\""+ //select the name of the issue type
